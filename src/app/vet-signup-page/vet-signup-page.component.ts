@@ -10,7 +10,10 @@ import {SPECIALITYLIST} from '../Constant'
 })
 export class VetSignupPageComponent implements OnInit {
 
+
   registerForm: FormGroup;
+  connectForm: FormGroup;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
@@ -22,30 +25,35 @@ export class VetSignupPageComponent implements OnInit {
       lastName: ['', [Validators.required]],
       birthDate : ['', [Validators.required]],
       password : ['', [Validators.required, Validators.minLength(5)]],
-      name: ['', [Validators.required]],
-      address : ['', [Validators.required]],
-      postalCode : ['', [Validators.required]],
-      city : ['', [Validators.required]],
-      speciality : ['', [Validators.required]],
-      rpps: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(15)]],
+      remember: ['', []]
+    });
+
+    this.connectForm = this.formBuilder.group({
+      email : ['', [Validators.required, Validators.email]],
+      password : ['', [Validators.required]],
+      remember: ['', []]
     });
     this.maxDate = new Date();
   }
 
-  maxDate: Date;
-  hide : boolean = true;
-
-  speciality : string[] = SPECIALITYLIST;
-
   ngOnInit(): void {
   }
 
-  getPostalCodeLength(){
-    return this.registerForm.get("postalCode")?.value.length;
+  maxDate: Date;
+  isSignIn: boolean = true;
+  hide : boolean = true;
+  remember : boolean = false;
+
+
+  signInToUp(){
+    this.isSignIn = !this.isSignIn;
+  }
+
+  signIn(){
+    console.log(this.connectForm.value)
   }
 
   signUp(){
     console.log(this.registerForm.value)
   }
-
 }

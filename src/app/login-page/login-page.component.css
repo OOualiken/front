@@ -37,6 +37,18 @@
   background-color: #007bff;
 }
 
+
 .input {
   width: 300px;
+
+}
+
+.content{
+  background: url('../../assets/10668.png') no-repeat;
+  background-position: center;
+
+
+  background-size: auto 100%;
+
+
 }
