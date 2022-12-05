@@ -1,0 +1,151 @@
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .mat-toolbar {
+    background: url('assets/fle.jpg') no-repeat center;
+    background-size: cover;
+    background-color: #E3EDFB;
+    color: rgba(0, 123, 255, 0.52);
+    height: 603px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar button {
+    margin: 0 10px;
+  }
+
+  .pro {
+    color: #007bff;
+  }
+
+  .connect{
+    font-weight: 600;
+    margin-right: 20px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 8px;
+  }
+
+  .toolbar #youtube-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover,
+  .toolbar #youtube-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #007bff;
+  }
+
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .titre {
+    font-family: Leckerli One;
+    font-weight: lighter;
+    margin: 0 20px;
+    font-size: 26px;
+  }
+  mat-grid-tile {
+    background: #ffffff;
+    box-shadow: inset 0 0 1em rgb(255, 255, 255), 0 0 2em rgba(0, 0, 0, 0.11);
+
+  }
+</style>
+<p>
+
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>Vet Service</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="spacer"></span>
+
+      <Span [hidden]="isConnected">
+  <button mat-raised-button class="pro" routerLink="vet-signup">Vous êtes un professionnel de santé ?</button>
+  <button mat-button class="connect" routerLink="login">Se connecter / S'inscrire</button>
+</Span>
+
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-grid-list cols="3" rowHeight="2:1">
+    <mat-grid-tile>
+      <img src="assets/ping.png" width="35%">
+      <button mat-raised-button class="pro"  >en savoir plus </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <img src="assets/cat.png" width="35%">
+      <button mat-raised-button class="pro" >Decouvrir</button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <img src="assets/2201_w026_n002_1368b_p1_1368.png" width="35%">
+
+      <button mat-raised-button class="pro"  > Decouvrire les conseil </button>
+    </mat-grid-tile>
+
+  </mat-grid-list>
+
+
+</p>
+
+<router-outlet></router-outlet>
