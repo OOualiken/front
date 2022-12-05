@@ -8,15 +8,7 @@ import {ProgressBarMode} from "@angular/material/progress-bar";
   styleUrls: ['./vet-page.component.css']
 })
 export class VetPageComponent implements OnInit {
-  title = 'admin-panel-layout';
-  sideBarOpen = true;
-  color: ThemePalette = 'primary';
-  mode: ProgressBarMode = 'determinate';
-  value = 50;
-  bufferValue = 75
-  sideBarToggler() {
-    this.sideBarOpen = !this.sideBarOpen;
-  }
+
   constructor() { }
 
   ngOnInit(): void {
