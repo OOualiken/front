@@ -8,6 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class DashbordComponent implements OnInit {
   sideBarOpen = true;
 
+  public totalItem : number = 0;
+  public searchTerm !: string;
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
   }
@@ -15,5 +17,9 @@ export class DashbordComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+    //this.cartService.search.next(this.searchTerm);
+  }
 }
