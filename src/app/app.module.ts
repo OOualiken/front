@@ -39,6 +39,7 @@ import {MatRadioModule} from "@angular/material/radio";
 import {MatSliderModule} from "@angular/material/slider";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatTableModule} from "@angular/material/table";
 
 
 @NgModule({
@@ -87,6 +88,7 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     MatSliderModule,
     MatTabsModule,
     MatButtonToggleModule,
+    MatTableModule,
   ],
   exports:[
     MatButtonModule,
