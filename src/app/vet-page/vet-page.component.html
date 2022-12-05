@@ -1,1 +1,20 @@
-<p>vet-page works!</p>
+<mat-drawer-container>
+  <mat-drawer #drawer mode="side" opened>
+    <h1>User name </h1>
+    <mat-list role="list" class="side-bar">
+
+      <mat-list-item role="listitem">Dashbord</mat-list-item>
+      <mat-list-item role="listitem">Shcuduler</mat-list-item>
+      <mat-list-item role="listitem">Service</mat-list-item>
+      <mat-list-item role="listitem">Profile</mat-list-item>
+      <mat-list-item role="listitem">News lettre</mat-list-item>
+    </mat-list>
+  </mat-drawer>
+
+  <mat-drawer-content>
+    <div class="right-side">
+      <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="drawer.toggle()">reorder</mat-icon>
+      <h1> VetService</h1>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
