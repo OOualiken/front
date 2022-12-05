@@ -27,6 +27,16 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import { DashbordComponent } from './dashbord/dashbord.component';
+import { ProfileComponent } from './profile/profile.component';
+import { SchadulerComponent } from './schaduler/schaduler.component';
+import { ServicesComponent } from './services/services.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
+import { HeaderComponent } from './header/header.component';
+import {MatMenuModule} from "@angular/material/menu";
+import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatRadioModule} from "@angular/material/radio";
+import {MatSliderModule} from "@angular/material/slider";
 
 
 @NgModule({
@@ -38,7 +48,14 @@ import {MatListModule} from "@angular/material/list";
     LoginPageComponent,
     VetPageComponent,
     SearchVetPageComponent,
-    VetSignupPageComponent
+    VetSignupPageComponent,
+    DashbordComponent,
+    ProfileComponent,
+    SchadulerComponent,
+    ServicesComponent,
+    NewsletterComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +80,9 @@ import {MatListModule} from "@angular/material/list";
     MatGridListModule,
     MatSidenavModule,
     MatListModule,
+    MatMenuModule,
+    MatRadioModule,
+    MatSliderModule,
   ],
   exports:[
     MatButtonModule,
