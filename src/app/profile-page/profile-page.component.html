@@ -1,1 +1,48 @@
-<p>profile-page works!</p>
+<mat-tab-group>
+  <mat-tab label="Mes infrmation personne ">
+    <mat-list>
+      <mat-list-item> nom </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> prenom </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> Numero de Téléphone </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> Email </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list-item> Mon de passe  </mat-list-item>
+      <mat-divider></mat-divider>
+    </mat-list>
+
+  </mat-tab>
+
+  <mat-tab label="Mon historiques de Rendez-vous ">
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <ng-container matColumnDef="position">
+        <mat-header-cell *matHeaderCellDef> Numero  </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+      </ng-container>
+
+
+      <ng-container matColumnDef="prenom">
+        <mat-header-cell *matHeaderCellDef> Prenom </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.prenom}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <mat-header-cell *matHeaderCellDef> Date </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.date}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+  </mat-tab>
+  <mat-tab label="gestion de mon abonnement"> Content 3 </mat-tab>
+</mat-tab-group>
