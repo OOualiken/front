@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 import {SPECIALITYLIST} from '../Constant'
+import {AuthService} from "../services/auth-service/auth-service.service";
 
 @Component({
   selector: 'app-vet-signup-page',
@@ -14,8 +15,11 @@ export class VetSignupPageComponent implements OnInit {
   registerForm: FormGroup;
   connectForm: FormGroup;
   submitted = false;
+  isSignIn: boolean = true;
+  hide : boolean = true;
+  remember : boolean = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
       phoneNb: ['', [ Validators.required,
         Validators.pattern("^[0-9]*$"),
@@ -23,9 +27,10 @@ export class VetSignupPageComponent implements OnInit {
       email : ['', [Validators.required, Validators.email]],
       firstName: ['', [Validators.required]],
       lastName: ['', [Validators.required]],
-      birthDate : ['', [Validators.required]],
+      speciality : ['', [Validators.required]],
       password : ['', [Validators.required, Validators.minLength(5)]],
-      remember: ['', []]
+      street : ['', [Validators.required]],
+      postalCode : ['', [Validators.required]],
     });
 
     this.connectForm = this.formBuilder.group({
@@ -33,27 +38,20 @@ export class VetSignupPageComponent implements OnInit {
       password : ['', [Validators.required]],
       remember: ['', []]
     });
-    this.maxDate = new Date();
   }
 
   ngOnInit(): void {
   }
-
-  maxDate: Date;
-  isSignIn: boolean = true;
-  hide : boolean = true;
-  remember : boolean = false;
-
 
   signInToUp(){
     this.isSignIn = !this.isSignIn;
   }
 
   signIn(){
-    console.log(this.connectForm.value)
+    this.authService.login(this.connectForm.value)
   }
 
   signUp(){
-    console.log(this.registerForm.value)
+    this.authService.registerVet(this.registerForm.value)
   }
 }

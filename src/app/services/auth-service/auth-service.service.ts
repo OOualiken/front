@@ -83,12 +83,10 @@ export class AuthService {
         phoneNb: body.phoneNb,
         speciality: body.speciality,
         role: "veterinary",
-        institutionName: body.institutionName,
         street: body.street,
         postalCode: body.postalCode,
         city: body.city,
         country: body.country,
-        rpps: body.rpps,
         appointmentType: body.appointmentType,
         paymentMethod: body.paymentMethod
       }

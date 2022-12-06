@@ -41,8 +41,11 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
 import { CartComponent } from './cart/cart.component';
+
 import { FilterPipe } from './dashbord/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+
+
 
 
 @NgModule({
@@ -70,6 +73,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
