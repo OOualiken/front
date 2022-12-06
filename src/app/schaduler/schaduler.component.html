@@ -1,4 +1,17 @@
 <mat-tab-group>
-  <mat-tab label="Mes rendez-vous "> Content 1 </mat-tab>
+  <mat-tab label="Mes rendez-vous ">
+    <mat-form-field appearance="fill">
+      <mat-label>Input & change events</mat-label>
+      <input matInput [matDatepicker]="picker"
+             (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+  </mat-tab>
   <mat-tab label="prendre Mes rendez-vous "> Content 2 </mat-tab>
 </mat-tab-group>
+
+git

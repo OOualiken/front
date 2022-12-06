@@ -40,6 +40,7 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -58,7 +59,9 @@ import {MatTableModule} from "@angular/material/table";
     ServicesComponent,
     NewsletterComponent,
     HeaderComponent,
-    SidebarComponent
+    SidebarComponent,
+    CartComponent,
+
   ],
   imports: [
     BrowserModule,

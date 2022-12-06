@@ -11,6 +11,7 @@ import {ProfilePageComponent} from "./profile-page/profile-page.component";
 import {SchadulerComponent} from "./schaduler/schaduler.component";
 import {ServicesComponent} from "./services/services.component";
 import {NewsletterComponent} from "./newsletter/newsletter.component";
+import {CartComponent} from "./cart/cart.component";
 
 export const routes: Routes = [
   {path: "", component: HomePageComponent,},
@@ -23,6 +24,8 @@ export const routes: Routes = [
   {path: "profile", component: ProfilePageComponent},
   {path: "schaduler", component: SchadulerComponent},
   {path: "services", component: ServicesComponent},
+  {path:'cart', component: CartComponent},
+
   {path: "newsletter", component: NewsletterComponent}
 ];
 
