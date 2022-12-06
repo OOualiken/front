@@ -27,6 +27,7 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
@@ -43,6 +44,7 @@ import {MatListModule} from "@angular/material/list";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,

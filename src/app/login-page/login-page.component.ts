@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {AuthService} from "../services/auth-service/auth-service.service";
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,12 @@ export class LoginPageComponent implements OnInit {
   connectForm: FormGroup;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder) {
+  maxDate: Date;
+  isSignIn: boolean = true;
+  hide : boolean = true;
+  remember : boolean = false;
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
     this.registerForm = this.formBuilder.group({
       phoneNb: ['', [ Validators.required,
         Validators.pattern("^[0-9]*$"),
@@ -36,21 +42,17 @@ export class LoginPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  maxDate: Date;
-  isSignIn: boolean = true;
-  hide : boolean = true;
-  remember : boolean = false;
-
 
   signInToUp(){
     this.isSignIn = !this.isSignIn;
   }
 
   signIn(){
-    console.log(this.connectForm.value)
+    this.authService.login(this.connectForm.value)
   }
 
   signUp(){
-    console.log(this.registerForm.value)
+    this.authService.registerUser(this.registerForm.value)
   }
+
 }
