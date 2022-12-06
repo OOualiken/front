@@ -41,11 +41,15 @@ import {MatTabsModule} from "@angular/material/tabs";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatTableModule} from "@angular/material/table";
 import { CartComponent } from './cart/cart.component';
+import { FilterPipe } from './dashbord/filter.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    FilterPipe,
+
     HomePageComponent,
     ProfilePageComponent,
     BackOfficePageComponent,
@@ -76,6 +80,7 @@ import { CartComponent } from './cart/cart.component';
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    HttpClientModule,
     ReactiveFormsModule,
     MatCheckboxModule,
     FormsModule,
