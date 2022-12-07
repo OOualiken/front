@@ -18,8 +18,9 @@ export class AppComponent {
     this.userService.getCurrentUser().subscribe(data => {
       this.isConnected = true
       this.role = data.role
+      console.log(data)
     }, err =>  {
-
+      console.log(err)
     })
   }
 
