@@ -29,7 +29,7 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import { DashbordComponent } from './dashbord/dashbord.component';
 import { ProfileComponent } from './profile/profile.component';
-import { SchadulerComponent } from './schaduler/schaduler.component';
+import {DialogOverviewExampleDialog, PizzaPartyComponent, SchadulerComponent} from './schaduler/schaduler.component';
 import { ServicesComponent } from './services/services.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
 import { HeaderComponent } from './header/header.component';
@@ -44,6 +44,9 @@ import { CartComponent } from './cart/cart.component';
 
 import { FilterPipe } from './dashbord/filter.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import {MatDialogModule} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -52,7 +55,9 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
     FilterPipe,
-
+    PizzaPartyComponent,
+    SchadulerComponent,
+    DialogOverviewExampleDialog,
     HomePageComponent,
     ProfilePageComponent,
     BackOfficePageComponent,
@@ -62,7 +67,7 @@ import { HttpClientModule } from '@angular/common/http';
     VetSignupPageComponent,
     DashbordComponent,
     ProfileComponent,
-    SchadulerComponent,
+
     ServicesComponent,
     NewsletterComponent,
     HeaderComponent,
@@ -74,6 +79,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
@@ -101,6 +107,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatTabsModule,
     MatButtonToggleModule,
     MatTableModule,
+    MatDialogModule,
   ],
   exports:[
     MatButtonModule,

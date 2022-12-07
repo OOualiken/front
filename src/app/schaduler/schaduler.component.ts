@@ -1,31 +1,84 @@
-import { OnInit} from '@angular/core';
+import {Component, OnInit, Output, EventEmitter, Inject} from '@angular/core';
 import {MatDatepickerInputEvent} from "@angular/material/datepicker";
-import {Validators} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
-import {Component, ViewChild} from '@angular/core';
-import {MatTable} from '@angular/material/table';
-import {DataSource} from "@angular/cdk/collections";
-import {Observable, ReplaySubject} from "rxjs";
 
-export interface PeriodicElement {
+
+interface Animal {
   name: string;
-  position: number;
-  weight: number;
-  symbol: string;
+  sound: string;
+}
+interface Horaire {
+  heur: string;
+}
+@Component({
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
+  styleUrls: ['./schaduler.component.css']
+
+})
+
+export class DialogOverviewExampleDialog {
+  durationInSeconds = 2;
+
+  selected: Date | null;
+  constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,private _snackBar: MatSnackBar) {}
+
+  horaire: Horaire[] = [
+    {heur: '8h'},
+    {heur: '8.30h'},
+    {heur: '9h'},
+    {heur: '9.30h'},
+    {heur: '10h'},
+    {heur: '10h30'},
+    {heur: '11H30h'},
+    {heur: '12h'},
+    {heur: '12h30'},
+    {heur: '13h'},
+    {heur: '13h30'},
+    {heur: '14h'},
+    {heur: '14h30'},
+    {heur: '15h'},
+    {heur: '15h30'},
+    {heur: '16h'},
+    {heur: '16h30'},
+    {heur: '17h'},
+    {heur: '17h30'},
+    {heur: '18h'},
+    {heur: '18h30'},
+    {heur: '19h'},
+
+  ];
+
+  openSnackBar() {
+    this._snackBar.openFromComponent(PizzaPartyComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
+
 }
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+
+@Component({
+  selector: 'snack-bar-component-example-snack',
+  templateUrl: 'snack-bar-component-example-snack.html',
+  styles: [
+    `
+    .example-pizza-party {
+      color: hotpink;
+    }
+  `,
+  ],
+})
+export class PizzaPartyComponent {}
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-schaduler',
@@ -34,48 +87,24 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 })
 export class SchadulerComponent implements OnInit {
-  events: string[] = [];
-  addEvent(type: string, event: MatDatepickerInputEvent<Date>) {
-    this.events.push(`${type}: ${event.value}`);
-  }
-
+  selected: Date | null;
   ngOnInit(): void {
   }
+  animal: string;
+  name: string;
 
+  constructor(public dialog: MatDialog) {}
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      data: {name: this.name, animal: this.animal},
+    });
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataToDisplay = [...ELEMENT_DATA];
-
-  dataSource = new ExampleDataSource(this.dataToDisplay);
-
-  addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
-    this.dataToDisplay = [...this.dataToDisplay, ELEMENT_DATA[randomElementIndex]];
-    this.dataSource.setData(this.dataToDisplay);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
   }
 
-  removeData() {
-    this.dataToDisplay = this.dataToDisplay.slice(0, -1);
-    this.dataSource.setData(this.dataToDisplay);
-  }
 }
 
-class ExampleDataSource extends DataSource<PeriodicElement> {
-  private _dataStream = new ReplaySubject<PeriodicElement[]>();
-
-  constructor(initialData: PeriodicElement[]) {
-    super();
-    this.setData(initialData);
-  }
-
-  connect(): Observable<PeriodicElement[]> {
-    return this._dataStream;
-  }
-
-  disconnect() {}
-
-  setData(data: PeriodicElement[]) {
-    this._dataStream.next(data);
-  }
-}

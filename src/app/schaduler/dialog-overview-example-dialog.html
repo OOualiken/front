@@ -1,0 +1,15 @@
+<h4>Disponibilité</h4>
+<mat-form-field appearance="fill">
+  <mat-label> heur</mat-label>
+  <mat-select>
+    <mat-option>None</mat-option>
+    <mat-option *ngFor="let state of horaire" [value]="state">{{state.heur}}</mat-option>
+  </mat-select>
+
+</mat-form-field>
+<mat-card class="demo-inline-calendar-card">
+  <mat-calendar [(selected)]="selected"></mat-calendar>
+</mat-card>
+<button mat-button mat-dialog-close="">retour</button>
+<button mat-stroked-button (click)="openSnackBar()" aria-label="Show an example snack-bar" mat-dialog-close=""> Valider la disponibilité</button>
+
