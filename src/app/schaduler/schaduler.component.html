@@ -8,8 +8,6 @@
   <mat-card class="demo-inline-calendar-card">
     <mat-calendar [(selected)]="selected"></mat-calendar>
   </mat-card>
-
-
   <div class="container">
     <div class="row">
       <ng-container>
@@ -23,8 +21,6 @@
       </ng-container>
     </div>
   </div>
-
-
   <div class="container">
     <div class="row">
       <ng-container>
@@ -44,20 +40,45 @@
 
   </mat-tab>
 
+  <mat-tab label="prendre Mes rendez-vous ">
+    <header>
+      <div class="navbar navbar-dark bg-primary shadow-sm">
+        <div class="navbar-brand align-item-center d-flex">
+          <div class="form-group">
 
+        </div>
+        </div>
+      </div>
+    </header>
+    <form>
+      <h2>selectionner une specialité </h2>
+      <mat-form-field appearance="fill">
+        <mat-label>Favorite food</mat-label>
+        <mat-select [(ngModel)]="selectedValue" name="food">
+          <mat-option *ngFor="let food of foods" [value]="food.value">
+            {{food.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p>  {{selectedValue}} </p>
 
+    </form>
+    <h2>selectionner une date </h2>
 
-
-
-
-
-  <mat-tab label="prendre Mes rendez-vous "> Content 2 </mat-tab>
-
-  <mat-tab label="Long tab">
-    <div class="example-large-box mat-elevation-z4">
-      Large content
-    </div>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="picker">
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="picker">
+        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+      </mat-datepicker-toggle>
+      <mat-datepicker #picker ></mat-datepicker>
+    </mat-form-field>
   </mat-tab>
+  <button class="btn btn-primary"> trouver un rdv</button>
+
+
+
 </mat-tab-group>
 
 

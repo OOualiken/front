@@ -79,7 +79,10 @@ export interface DialogData {
   animal: string;
   name: string;
 }
-
+interface Food {
+  value: string;
+  viewValue: string;
+}
 @Component({
   selector: 'app-schaduler',
   templateUrl: './schaduler.component.html',
@@ -92,9 +95,23 @@ export class SchadulerComponent implements OnInit {
   }
   animal: string;
   name: string;
+  searchTerm: any;
+  selectedValue: any;
+  selectedCar: string;
+
+  foods: Food[] = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'},
+  ];
+
 
   constructor(public dialog: MatDialog) {}
-
+  search(event:any){
+    this.searchTerm = (event.target as HTMLInputElement).value;
+    console.log(this.searchTerm);
+   // this.cartService.search.next(this.searchTerm);
+  }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       data: {name: this.name, animal: this.animal},
