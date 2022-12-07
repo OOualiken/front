@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {User} from "../models/user";
-import {UserService} from "../services/user-service/user.service";
+import {Observable, Observer} from "rxjs";
 
 export interface PeriodicElement {
   name: string;
@@ -29,26 +28,12 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent implements OnInit {
-
-  user!: User
-  isConnected: boolean = false
-
-  constructor(private userService: UserService) {
-    this.userService.getCurrentUser().subscribe(data => {
-        this.isConnected = true
-        this.user = data
-      }, err =>  {
-
-    })
-  }
-
+  constructor() {}
   displayedColumns: string[] = ['position', 'name', 'prenom', 'date'];
   dataSource = ELEMENT_DATA;
 
   /** Gets the total cost of all transactions. */
 
   ngOnInit(): void {
-
   }
-
 }
