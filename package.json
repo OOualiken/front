@@ -10,8 +10,8 @@
     "start": " npm i && ng serve --proxy-config src/proxy.config.json",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "postinstall": "ngcc"
+    "test": "ng test"
+
   },
   "private": true,
   "dependencies": {
