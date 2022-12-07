@@ -1,5 +1,6 @@
 
 import { Component } from '@angular/core';
+import {UserService} from "./services/user-service/user.service";
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Vetservice';
-  isConnected: boolean = false;
   sideBarOpen = true;
+  isConnected: boolean = false
+  role: string = ""
+
+
+  constructor(private userService: UserService) {
+    this.userService.getCurrentUser().subscribe(data => {
+      this.isConnected = true
+      this.role = data.role
+      console.log(data)
+    }, err =>  {
+      console.log(err)
+    })
+  }
 
   sideBarToggler() {
     this.sideBarOpen = !this.sideBarOpen;
