@@ -1,5 +1,5 @@
 
-  <mat-drawer-container [hidden]="isConnected">
+  <mat-drawer-container [hidden]="!isConnected">
     <mat-drawer mode="side" [opened]="sideBarOpen">
       <app-sidebar></app-sidebar>
     </mat-drawer>

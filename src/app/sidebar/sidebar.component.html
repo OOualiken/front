@@ -1,4 +1,4 @@
-<mat-nav-list>
+<mat-nav-list [hidden]="!isConnected">
   <div class="logo py-4">
     <img src="./assets/" alt="Company Logo" />
   </div>
@@ -7,8 +7,8 @@
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/profile"><mat-icon>face</mat-icon> Profile</a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/schaduler"><mat-icon>schedule</mat-icon> Schedule</a>
   <a mat-list-item routerLinkActive="list-item-active" routerLink="/services"><mat-icon>pets</mat-icon> Services</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/newsletter"><mat-icon>receipt</mat-icon> Newslettre</a>
-  <a mat-list-item routerLinkActive="list-item-active" routerLink="/admin"><mat-icon>receipt</mat-icon> Admin</a>
+  <a mat-list-item routerLinkActive="list-item-active" routerLink="/newsletter" [hidden]="role!=='veterinary'"><mat-icon>receipt</mat-icon> Newslettre</a>
+  <a mat-list-item routerLinkActzive="list-item-active" routerLink="/admin" [hidden]="role!=='admin'"><mat-icon>receipt</mat-icon> Admin</a>
 
 
 </mat-nav-list>
