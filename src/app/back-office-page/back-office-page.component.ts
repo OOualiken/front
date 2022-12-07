@@ -12,4 +12,7 @@ export class BackOfficePageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  removeItem() {
+
+  }
 }
