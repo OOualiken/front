@@ -127,7 +127,6 @@ export class SchadulerComponent implements OnInit {
 
 
   constructor(public dialog: MatDialog, private route: ActivatedRoute, private vetdispoService : VetdisponibilityService) {
-
     this.route.data.subscribe(data => this.profile = data.profile);
     this.vetdispoService.getMyAppointment().subscribe(data => {
       this.dispoList = data
@@ -139,7 +138,17 @@ export class SchadulerComponent implements OnInit {
 
   search(){
   }
-  openDialog(): void {
+
+  async getvetDispo(): Promise<void> {
+    const result = await this.vetdispoService.getVetDisponibility(this.profile.id, this.selected)
+    result.subscribe(async value => {
+      console.log(value)
+    },error => {
+        console.log(error)
+    }
+    )
+  }
+    openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       data: {name: this.name, animal: this.animal},
     });
@@ -149,6 +158,8 @@ export class SchadulerComponent implements OnInit {
       this.animal = result;
     });
   }
+
+
 
 }
 

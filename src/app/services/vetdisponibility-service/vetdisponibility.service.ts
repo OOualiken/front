@@ -25,7 +25,7 @@ export class VetdisponibilityService {
       {headers: header})
   }
 
-  getVetDisponibility(vetId: string, date: Date): Observable<any>{
+  getVetDisponibility(vetId: string, date: Date | null): Observable<any>{
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.post<any>(this.baseUrl+"/disponibility-list/"+vetId,
       {

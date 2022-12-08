@@ -45,7 +45,7 @@ export class ProfilePageComponent implements OnInit {
 
   /** Gets the total cost of all transactions. */
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
   }
 
