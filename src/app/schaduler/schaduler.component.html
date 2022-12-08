@@ -1,9 +1,9 @@
 <mat-tab-group dynamicHeight>
-<mat-tab label="Mes rendez-vous/ "  [hidden]="profile.role!=='veterinary'">
+<mat-tab label=" gestion calendrier" [hidden]="profile.role!=='veterinary'">
   <div class="navbar navbar-dark bg-primary shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
     </div>
-    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'">Ajouter une disponibilité</button>
+    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'"> Gestion de mon calendrier </button>
   </div>
   <mat-card class="demo-inline-calendar-card">
     <mat-calendar [(selected)]="selected" (selectedChange)="getvetDispo()"></mat-calendar>
@@ -32,7 +32,7 @@
 
 </mat-tab>
 
-  <mat-tab label="prendre Mes rendez-vous "  [hidden]="profile.role!=='client'">
+  <mat-tab label="prendre Mes rendez-vous " [hidden]="profile.role!=='client'">
     <header>
       <div class="navbar navbar-dark bg-primary shadow-sm">
         <div class="navbar-brand align-item-center d-flex">

@@ -142,6 +142,7 @@ export class SchadulerComponent implements OnInit {
   async getvetDispo(): Promise<void> {
     const result = await this.vetdispoService.getVetDisponibility(this.profile.id, this.selected)
     result.subscribe(async value => {
+   //   this.dispoList =value
       console.log(value)
     },error => {
         console.log(error)
