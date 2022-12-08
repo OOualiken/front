@@ -86,9 +86,6 @@ export class AuthService {
         street: body.street,
         postalCode: body.postalCode,
         city: body.city,
-        country: body.country,
-        appointmentType: body.appointmentType,
-        paymentMethod: body.paymentMethod
       }
     ).subscribe(data => {
         AuthService.saveToken(data.result)
