@@ -26,12 +26,28 @@ export class VetdisponibilityService {
       {headers: header})
   }
 
-  getVetDisponibility(vetId: string, date: Date): Observable<any>{
+  getVetDisponibility(vetId: string, date: Date | null): Observable<any>{
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.post<any>(this.baseUrl+"/disponibility-list/"+vetId,
       {
         date: date
       },
+      {headers: header})
+  }
+
+  getBooking(vetDispoId: string, service: string, petId: string): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.post<any>(this.baseUrl+"/book/"+vetDispoId,
+      {
+        service: service,
+        pet: petId,
+      },
+      {headers: header})
+  }
+
+  deleteBooking(vetDispoId: string): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.delete<any>(this.baseUrl+"/book/"+vetDispoId,
       {headers: header})
   }
 

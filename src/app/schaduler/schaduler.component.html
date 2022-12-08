@@ -1,46 +1,38 @@
 <mat-tab-group dynamicHeight>
-<mat-tab label="Mes rendez-vous/ ">
+<mat-tab label="Mes rendez-vous/ "  [hidden]="profile.role!=='veterinary'">
   <div class="navbar navbar-dark bg-primary shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
     </div>
-    <button class="btn btn-primary"  (click)="openDialog()">Ajouter une disponibilité</button>
+    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'">Ajouter une disponibilité</button>
   </div>
   <mat-card class="demo-inline-calendar-card">
-    <mat-calendar [(selected)]="selected"></mat-calendar>
+    <mat-calendar [(selected)]="selected" (selectedChange)="getvetDispo()"></mat-calendar>
   </mat-card>
-  <div class="container">
-    <div class="row">
-      <ng-container>
-        <div class="card col-md-3">
-          <img src="assets/cat.png"  width="20%" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> Mr fillipe de la vilardiére </h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> chiens malade ouf </p>
-          <p><strong>Heur</strong> 9H</p>
-          <button class="btn btn-primary">supprimer le rdv</button>
-        </div>
-      </ng-container>
+  <ng-container *ngFor="let app of dispoList.future">
+    <div class="container" *ngIf="app.bookingStatus">
+      <div class="row">
+          <div class="card col-md-3">
+            <img src="assets/ping.png" alt="">
+            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{app.bookingStatus}}</h5>
+          </div>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <ng-container>
+  </ng-container>
+
+  <ng-container *ngFor="let app of dispoList.future">
+    <div class="container" *ngIf="!app.bookingStatus">
+      <div class="row">
         <div class="card col-md-3">
-          <img src="assets/cat.png"  width="20%" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> Mr fillipe de la vilardiére </h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> chiens malade ouf </p>
-          <p><strong>Heur</strong> 9H</p>
-          <button class="btn btn-primary">supprimer le rdv</button>
+          <img src="assets/cat.png" alt="">
+          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{app.bookingStatus}}</h5>
         </div>
-      </ng-container>
+      </div>
     </div>
-  </div>
+  </ng-container>
 
+</mat-tab>
 
-
-
-  </mat-tab>
-
-  <mat-tab label="prendre Mes rendez-vous ">
+  <mat-tab label="prendre Mes rendez-vous "  [hidden]="profile.role!=='client'">
     <header>
       <div class="navbar navbar-dark bg-primary shadow-sm">
         <div class="navbar-brand align-item-center d-flex">
@@ -74,7 +66,7 @@
       </mat-datepicker-toggle>
       <mat-datepicker #picker ></mat-datepicker>
     </mat-form-field>
-  </mat-tab>
+  </mat-tab >
   <button class="btn btn-primary"> trouver un rdv</button>
 
 

@@ -9,22 +9,19 @@ export class User {
   private _phoneNb: string
   private _password?: string
   private _speciality?: string
-  private _appointmentType?: string[]
-  private _paymentMethod?: string[]
   private _street?: string
   private _postalCode?: string
   private _city?: string
   private _country?: string
   private _active?: boolean
-  private _healthRecords?: any[]
+  private _pets?: any[]
   private _customerId?: string
 
   constructor(_id: string,role: string,birthDate: Date, email: string, firstName: string, lastName: string,
               phoneNb: string, password: string, speciality: string | undefined,
-              appointmentType: string[] | undefined, paymentMethod: string[] | undefined,
               street: string | undefined, postalCode: string | undefined,
               city: string | undefined, country: string | undefined, rpps: number | undefined,
-              active: boolean | undefined, healthRecords: any[] | undefined, customerId: string | undefined) {
+              active: boolean | undefined, pets: any[] | undefined, customerId: string | undefined) {
     this._id = _id;
     this._role = role;
     this._birthDate = birthDate;
@@ -34,14 +31,12 @@ export class User {
     this._phoneNb = phoneNb;
     this._password = password;
     this._speciality = speciality;
-    this._appointmentType = appointmentType;
-    this._paymentMethod = paymentMethod;
     this._street = street;
     this._postalCode = postalCode;
     this._city = city;
     this._country = country;
     this._active = active
-    this._healthRecords = healthRecords
+    this._pets = pets
     this._customerId = customerId
   }
 
@@ -133,22 +128,6 @@ export class User {
     this._speciality = value;
   }
 
-  get paymentMethod(): string[] {
-    return <string[]>this._paymentMethod;
-  }
-
-  set paymentMethod(value: string[]) {
-    this._paymentMethod = value;
-  }
-
-  get appointmentType(): string[] {
-    return <string[]>this._appointmentType;
-  }
-
-  set appointmentType(value: string[]) {
-    this._appointmentType = value;
-  }
-
   get role(): string {
     return this._role;
   }
@@ -167,11 +146,11 @@ export class User {
   }
 
   get healthRecords(): any[] {
-    return <any[]>this._healthRecords;
+    return <any[]>this._pets;
   }
 
   set healthRecords(value: any[]) {
-    this._healthRecords = value;
+    this._pets = value;
   }
 
   get id(): string {

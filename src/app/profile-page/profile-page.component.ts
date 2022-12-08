@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../models/user";
 import {UserService} from "../services/user-service/user.service";
+import {ActivatedRoute} from "@angular/router";
 
 export interface PeriodicElement {
   name: string;
@@ -33,13 +34,10 @@ export class ProfilePageComponent implements OnInit {
   user!: User
   isConnected: boolean = false
 
-  constructor(private userService: UserService) {
-    this.userService.getCurrentUser().subscribe(data => {
-        this.isConnected = true
-        this.user = data
-      }, err =>  {
-
-    })
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+    this.route.data.subscribe(data => {
+      this.user = data.profile;
+    });
   }
 
   displayedColumns: string[] = ['position', 'name', 'prenom', 'date'];
@@ -47,7 +45,7 @@ export class ProfilePageComponent implements OnInit {
 
   /** Gets the total cost of all transactions. */
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
 
   }
 

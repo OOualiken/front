@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthService} from "../services/auth-service/auth-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -18,7 +19,8 @@ export class LoginPageComponent implements OnInit {
   hide : boolean = true;
   remember : boolean = false;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {
+  constructor(private formBuilder: FormBuilder, private authService: AuthService,private router : Router,
+  ) {
     this.registerForm = this.formBuilder.group({
       phoneNb: ['', [ Validators.required,
         Validators.pattern("^[0-9]*$"),
@@ -47,8 +49,9 @@ export class LoginPageComponent implements OnInit {
     this.isSignIn = !this.isSignIn;
   }
 
-  signIn(){
+   signIn() {
     this.authService.login(this.connectForm.value)
+   // this.router.navigate(['/profile'])
   }
 
   signUp(){

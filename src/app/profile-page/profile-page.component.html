@@ -1,4 +1,4 @@
-<mat-tab-group [hidden]="!isConnected">
+<mat-tab-group>
   <mat-tab label="Mes infrmation personne ">
     <mat-list>
       <mat-list-item> Nom : {{user.lastName}} </mat-list-item>
@@ -14,8 +14,7 @@
     </mat-list>
   </mat-tab>
 
-  <mat-tab label="Mon historiques de Rendez-vous ">
-
+  <mat-tab label="Mon historiques de Rendez-vous">
     <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <ng-container matColumnDef="position">
         <mat-header-cell *matHeaderCellDef> Numero </mat-header-cell>
@@ -44,4 +43,5 @@
     </mat-table>
   </mat-tab>
   <mat-tab label="gestion de mon abonnement" [hidden]="user.role!='veterinary'"> Content 3 </mat-tab>
+
 </mat-tab-group>
