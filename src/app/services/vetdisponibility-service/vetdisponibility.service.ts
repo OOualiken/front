@@ -35,6 +35,22 @@ export class VetdisponibilityService {
       {headers: header})
   }
 
+  getBooking(vetDispoId: string, service: string, petId: string): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.post<any>(this.baseUrl+"/book/"+vetDispoId,
+      {
+        service: service,
+        pet: petId,
+      },
+      {headers: header})
+  }
+
+  deleteBooking(vetDispoId: string): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.delete<any>(this.baseUrl+"/book/"+vetDispoId,
+      {headers: header})
+  }
+
   getMyAppointment(): Observable<any>{
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.get<any>(this.baseUrl, {headers: header}).pipe()
