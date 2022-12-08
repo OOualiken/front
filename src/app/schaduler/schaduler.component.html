@@ -3,37 +3,26 @@
   <div class="navbar navbar-dark bg-primary shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
     </div>
-    <button class="btn btn-primary"  (click)="openDialog()">Ajouter une disponibilité</button>
+    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'">Ajouter une disponibilité</button>
   </div>
   <mat-card class="demo-inline-calendar-card">
-    <mat-calendar [(selected)]="selected"></mat-calendar>
+    <mat-calendar [(selected)]="selected" (selectedChange)="search()"></mat-calendar>
   </mat-card>
-  <div class="container">
-    <div class="row">
-      <ng-container>
-        <div class="card col-md-3">
-          <img src="assets/cat.png"  width="20%" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> Mr fillipe de la vilardiére </h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> chiens malade ouf </p>
-          <p><strong>Heur</strong> 9H</p>
-          <button class="btn btn-primary">supprimer le rdv</button>
-        </div>
-      </ng-container>
+  <ng-container *ngFor="let app of dispoList.future">
+    <div class="container" *ngIf="app.bookingStatus">
+      <div class="row">
+        <ng-container>
+          <div class="card col-md-3">
+            <img src="assets/cat.png"  width="20%" alt="">
+            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> {{app.client.firstName}} {{app.client.lastName}}</h5>
+            <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> chiens malade ouf </p>
+            <p><strong>Date</strong> {{app.date}}</p>
+            <button class="btn btn-primary">supprimer le rdv</button>
+          </div>
+        </ng-container>
+      </div>
     </div>
-  </div>
-  <div class="container">
-    <div class="row">
-      <ng-container>
-        <div class="card col-md-3">
-          <img src="assets/cat.png"  width="20%" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> Mr fillipe de la vilardiére </h5>
-          <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> chiens malade ouf </p>
-          <p><strong>Heur</strong> 9H</p>
-          <button class="btn btn-primary">supprimer le rdv</button>
-        </div>
-      </ng-container>
-    </div>
-  </div>
+  </ng-container>
 
 
 

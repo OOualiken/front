@@ -3,6 +3,10 @@ import {MatDatepickerInputEvent} from "@angular/material/datepicker";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {VetdisponibilityService} from "../services/vetdisponibility-service/vetdisponibility.service";
+import {ActivatedRoute} from "@angular/router";
+import {User} from "../models/user";
+import {VetDisponibility} from "../models/vetDisponibility";
 
 interface Horaire {
   heure: string;
@@ -20,7 +24,7 @@ export class DialogOverviewExampleDialog {
 
   selected: Date | null | undefined;
   hours: Horaire = {heure: '8h00'}
-  constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+  constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private vetdispoService : VetdisponibilityService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,private _snackBar: MatSnackBar) {}
 
   horaire: Horaire[] = [
@@ -65,7 +69,13 @@ export class DialogOverviewExampleDialog {
     let date = new Date(<number>this.selected?.getFullYear(), <number>this.selected?.getMonth(), this.selected?.getDate(),
       parseInt(hoursSplit[0]), parseInt(hoursSplit[1]), 0)
 
-    console.log(date)
+    this.vetdispoService.postVetDisponibility(date).subscribe(
+      data => {
+        console.log(data)
+      }, error => {
+        console.log(error)
+      }
+    )
   }
 
 }
@@ -100,13 +110,14 @@ interface Food {
 })
 export class SchadulerComponent implements OnInit {
   selected: Date | null;
+  dispoList : any
   ngOnInit(): void {
   }
   animal: string;
   name: string;
-  searchTerm: any;
   selectedValue: any;
   selectedCar: string;
+  profile!: User
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
@@ -115,11 +126,18 @@ export class SchadulerComponent implements OnInit {
   ];
 
 
-  constructor(public dialog: MatDialog) {}
-  search(event:any){
-    this.searchTerm = (event.target as HTMLInputElement).value;
-    console.log(this.searchTerm);
-   // this.cartService.search.next(this.searchTerm);
+  constructor(public dialog: MatDialog, private route: ActivatedRoute, private vetdispoService : VetdisponibilityService) {
+
+    this.route.data.subscribe(data => this.profile = data.profile);
+    this.vetdispoService.getMyAppointment().subscribe(data => {
+      this.dispoList = data
+      console.log(this.dispoList)
+
+    })
+  }
+
+
+  search(){
   }
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {

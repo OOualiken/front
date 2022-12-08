@@ -17,23 +17,27 @@ export class VetdisponibilityService {
   constructor(private http: HttpClient,
               private router: Router, private authService: AuthService) { }
 
-  getCurrentUser(): Observable<User>{
-    let header = this.authService.getAuthorizationHeadersWithToken()
-    return this.http.get<User>(this.baseUrl, {headers: header}).pipe()
-  }
-
   postVetDisponibility(date: Date): Observable<VetDisponibility> {
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.post<VetDisponibility>(this.baseUrl+"/vet-disponibility",
-      date,
+      {
+        date: date
+      },
       {headers: header})
   }
 
   getVetDisponibility(vetId: string, date: Date): Observable<any>{
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.post<any>(this.baseUrl+"/disponibility-list/"+vetId,
-      date,
+      {
+        date: date
+      },
       {headers: header})
+  }
+
+  getMyAppointment(): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.get<any>(this.baseUrl, {headers: header}).pipe()
   }
 
 }

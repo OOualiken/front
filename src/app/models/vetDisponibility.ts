@@ -1,15 +1,16 @@
+import {User} from "./user";
 
 export class VetDisponibility {
 
   private _date: Date
   private _bookingStatus: Boolean
   private _service: string
-  private _veterinary: string
-  private _client: string
+  private _veterinary: User
+  private _client: User
   private _requestDate: Date
   private _pet: string
 
-  constructor(date: Date, bookingStatus: Boolean, service: string, veterinary: string, client: string, requestDate: Date, pet: string) {
+  constructor(date: Date, bookingStatus: Boolean, service: string, veterinary: User, client: User, requestDate: Date, pet: string) {
     this._date = date;
     this._bookingStatus = bookingStatus;
     this._service = service;
@@ -44,19 +45,19 @@ export class VetDisponibility {
     this._service = value;
   }
 
-  get veterinary(): string {
+  get veterinary(): User {
     return this._veterinary;
   }
 
-  set veterinary(value: string) {
+  set veterinary(value: User) {
     this._veterinary = value;
   }
 
-  get client(): string {
+  get client(): User {
     return this._client;
   }
 
-  set client(value: string) {
+  set client(value: User) {
     this._client = value;
   }
 
