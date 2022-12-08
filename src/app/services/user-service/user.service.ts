@@ -60,7 +60,23 @@ export class UserService {
       }, {headers: header}
     )
   }
+
   updateUserSchedule(schedule: Schedule){
 
+  }
+
+  deleteUserById(id: string): Observable<User>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.delete<User>(this.baseUrl+"/"+id, {headers: header})
+  }
+
+  getUserListByRole(role: string): Observable<User[]>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.get<User[]>(this.baseUrl+"/role-list/"+role, {headers: header})
+  }
+
+  getInvalidVetList(): Observable<User[]>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.get<User[]>(this.baseUrl+"/invalid-vet", {headers: header})
   }
 }

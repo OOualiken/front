@@ -4,7 +4,6 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {AuthService} from "../auth-service/auth-service.service";
 import {Observable} from "rxjs";
-import {User} from "../../models/user";
 import {VetDisponibility} from "../../models/vetDisponibility";
 
 @Injectable({
