@@ -4,14 +4,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 
-
-
-interface Animal {
-  name: string;
-  sound: string;
-}
 interface Horaire {
-  heur: string;
+  heure: string;
 }
 @Component({
   selector: 'dialog-overview-example-dialog',
@@ -23,33 +17,36 @@ interface Horaire {
 export class DialogOverviewExampleDialog {
   durationInSeconds = 2;
 
-  selected: Date | null;
+
+  selected: Date | null | undefined;
+  hours: Horaire = {heure: '8h00'}
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData,private _snackBar: MatSnackBar) {}
 
   horaire: Horaire[] = [
-    {heur: '8h'},
-    {heur: '8.30h'},
-    {heur: '9h'},
-    {heur: '9.30h'},
-    {heur: '10h'},
-    {heur: '10h30'},
-    {heur: '11H30h'},
-    {heur: '12h'},
-    {heur: '12h30'},
-    {heur: '13h'},
-    {heur: '13h30'},
-    {heur: '14h'},
-    {heur: '14h30'},
-    {heur: '15h'},
-    {heur: '15h30'},
-    {heur: '16h'},
-    {heur: '16h30'},
-    {heur: '17h'},
-    {heur: '17h30'},
-    {heur: '18h'},
-    {heur: '18h30'},
-    {heur: '19h'},
+    {heure: '8h00'},
+    {heure: '8h30'},
+    {heure: '9h00'},
+    {heure: '9h30'},
+    {heure: '10h00'},
+    {heure: '10h30'},
+    {heure: '11h00'},
+    {heure: '11h30'},
+    {heure: '12h00'},
+    {heure: '12h30'},
+    {heure: '13h00'},
+    {heure: '13h30'},
+    {heure: '14h00'},
+    {heure: '14h30'},
+    {heure: '15h00'},
+    {heure: '15h30'},
+    {heure: '16h00'},
+    {heure: '16h30'},
+    {heure: '17h00'},
+    {heure: '17h30'},
+    {heure: '18h00'},
+    {heure: '18h30'},
+    {heure: '19h00'},
 
   ];
 
@@ -57,6 +54,18 @@ export class DialogOverviewExampleDialog {
     this._snackBar.openFromComponent(PizzaPartyComponent, {
       duration: this.durationInSeconds * 1000,
     });
+  }
+
+
+  saveDispo(){
+    console.log(this.selected)
+    console.log(this.hours)
+
+    let hoursSplit = this.hours.heure.split('h')
+    let date = new Date(<number>this.selected?.getFullYear(), <number>this.selected?.getMonth(), this.selected?.getDate(),
+      parseInt(hoursSplit[0]), parseInt(hoursSplit[1]), 0)
+
+    console.log(date)
   }
 
 }

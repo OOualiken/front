@@ -9,18 +9,17 @@ import {UserService} from "./services/user-service/user.service";
 })
 export class AppComponent {
   title = 'Vetservice';
-  sideBarOpen = true;
+  sideBarOpen = false;
   isConnected: boolean = false
   role: string = ""
 
 
   constructor(private userService: UserService) {
     this.userService.getCurrentUser().subscribe(data => {
+      this.sideBarOpen = true
       this.isConnected = true
       this.role = data.role
-      console.log(data)
     }, err =>  {
-      console.log(err)
     })
   }
 

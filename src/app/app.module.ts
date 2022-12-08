@@ -48,9 +48,6 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {MatSnackBar} from "@angular/material/snack-bar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,14 +64,13 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     VetSignupPageComponent,
     DashbordComponent,
     ProfileComponent,
-
     ServicesComponent,
     NewsletterComponent,
     HeaderComponent,
     SidebarComponent,
     CartComponent,
-
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -109,6 +105,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatTableModule,
     MatDialogModule,
   ],
+
   exports:[
     MatButtonModule,
     MatIconModule,
@@ -126,9 +123,11 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatSelectModule
   ],
+
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'fr-FR' }
   ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {
