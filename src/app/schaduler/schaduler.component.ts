@@ -110,7 +110,7 @@ interface Food {
 })
 export class SchadulerComponent implements OnInit {
   selected: Date = new Date()
-  dispoList : any
+  dispoList : any = []
   selectedPet!: string
   selectedBookingDate: Date = new Date()
   bookingDispoList: any[] = []
@@ -138,16 +138,12 @@ export class SchadulerComponent implements OnInit {
     this.vetdispoService.getMyAppointment().subscribe(data => {
       this.dispoList = data
       console.log(this.dispoList)
-
-
     })
   }
-
 
   search(){
 
   }
-
 
   getDisponibilityByDate(){
     this.vetdispoService.getAllDisponibilityByDate(this.selectedBookingDate).subscribe(data => {
@@ -204,8 +200,9 @@ export class SchadulerComponent implements OnInit {
     return this.selectedValue == undefined || this.selectedPet==undefined ||
       !(this.selectedValue.length>0 && this.selectedPet.length>0)
   }
-  deleteappointment(_id: any) {
-    this.vetdispoService.deleteVetDisponibility(_id).subscribe( value => {
+  deleteappointment(app: any) {
+    console.log(app)
+    this.vetdispoService.deleteVetDisponibility(app.id).subscribe( value => {
       console.log(value)
       window.location.reload();
     },error => {

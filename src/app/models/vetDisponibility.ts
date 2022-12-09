@@ -9,8 +9,10 @@ export class VetDisponibility {
   private _client: User
   private _requestDate: Date
   private _pet: string
+  private _id?: string
 
-  constructor(date: Date, bookingStatus: Boolean, service: string, veterinary: User, client: User, requestDate: Date, pet: string) {
+  constructor(date: Date, bookingStatus: Boolean, service: string, veterinary: User, client: User, requestDate: Date,
+              pet: string, id?: string) {
     this._date = date;
     this._bookingStatus = bookingStatus;
     this._service = service;
@@ -18,6 +20,7 @@ export class VetDisponibility {
     this._client = client;
     this._requestDate = requestDate;
     this._pet = pet;
+    this._id = id
   }
 
 
@@ -75,5 +78,14 @@ export class VetDisponibility {
 
   set pet(value: string) {
     this._pet = value;
+  }
+
+
+  get id(): string {
+    return <string>this._id;
+  }
+
+  set id(value: string) {
+    this._id = value;
   }
 }
