@@ -176,6 +176,16 @@ export class SchadulerComponent implements OnInit {
   }
 
 
+  deleteappointment(_id: any) {
+    this.vetdispoService.deleteVetDisponibility(_id).subscribe( value => {
+      console.log(value)
+      window.location.reload();
+    },error => {
+      console.log(error)
+    })
+
+  }
+
 
 }
 

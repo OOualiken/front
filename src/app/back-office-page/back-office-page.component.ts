@@ -11,6 +11,7 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 })
 export class BackOfficePageComponent implements OnInit {
   adminForm: FormGroup;
+  public vet : any = [];
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private authService: AuthService) {
 
@@ -23,6 +24,7 @@ export class BackOfficePageComponent implements OnInit {
 
     this.userService.getUserListByRole('veterinary').subscribe(
       data => {
+        this.vet=data
         console.log(data)
       }, error => {
         console.log(error)
