@@ -1,5 +1,5 @@
 <mat-tab-group>
-  <mat-tab label=" rendevous ">
+  <mat-tab label=" vet ">
     <ng-container>
       <div class="container">
         <div class="card-table">
@@ -15,6 +15,9 @@
                 <td style="width: 12%;"> postalCode </td>
                 <td style="width: 12%;"> speciality </td>
                 <td style="width: 12%;"> status </td>
+                <td style="width: 12%;"> delete </td>
+                <td style="width: 12%;"> go to valide </td>
+
 
 
 
@@ -22,29 +25,24 @@
               </thead>
               <tbody>
               <tr *ngFor="let item of vet; let i = index">
-                <td>{{i+1}}</td>
-                <td>{{item.title}}</td>
-                <td><img style="width: 120px;" src="assets/vet.png" alt=""></td>
                 <td style="width: 25%;">{{item.firstName}}</td>
                 <td style="width: 25%;">{{item.lastName}}</td>
-                <th style="width: 12%;">{{item.phoneNb}}</th>
+                <td style="width: 12%;">{{item.phoneNb}}</td>
                 <td style="width: 12%;">{{item.quantity}}</td>
                 <td style="width: 12%;">{{item.postalCode}}</td>
                 <td style="width: 12%;">{{item.speciality}}</td>
                 <td style="width: 12%;">{{item.active}}</td>
-
                 <td>
-
-                </td>
-              </tr>
-
-              <td>
                   <button (click)="removeItem()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </td>
                 <td>
                   <mat-button-toggle (click)="refuseteVetProfile('3')"  value="underline">Underline</mat-button-toggle>
-
                 </td>
+
+              </tr>
+
+
+
 
 
               <tr>
@@ -59,28 +57,52 @@
 
   </mat-tab>
 
-  <mat-tab label="Veterinaire">
+  <mat-tab label="client">
     <ng-container>
       <div class="container">
         <div class="card-table">
           <div class="cart-product">
             <table class="table table-responsive">
               <thead>
+
               <tr>
-                <td style="width: 25%;">nom</td>
-                <th style="width: 12%;">prenom</th>
-                <td style="width: 12%;">email</td>
+                <td style="width: 25%;">firstName</td>
+                <th style="width: 12%;">lastName</th>
+                <td style="width: 12%;">phoneNb</td>
+                <td style="width: 12%;"> quantity </td>
+                <td style="width: 12%;"> postalCode </td>
+                <td style="width: 12%;"> speciality </td>
+                <td style="width: 12%;"> status </td>
+                <td style="width: 12%;"> delete </td>
+                <td style="width: 12%;"> go to valide </td>
+
+
+
+
               </tr>
               </thead>
               <tbody>
-              <tr >
-                <td style="width: 12%;">test</td>
-                <td style="width: 25%;">djadji </td>
-                <th style="width: 12%;">traore</th>
+              <tr *ngFor="let item of vet; let i = index">
+                <td style="width: 25%;">{{item.firstName}}</td>
+                <td style="width: 25%;">{{item.lastName}}</td>
+                <td style="width: 12%;">{{item.phoneNb}}</td>
+                <td style="width: 12%;">{{item.quantity}}</td>
+                <td style="width: 12%;">{{item.postalCode}}</td>
+                <td style="width: 12%;">{{item.speciality}}</td>
+                <td style="width: 12%;">{{item.active}}</td>
                 <td>
                   <button (click)="removeItem()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </td>
+                <td>
+                  <mat-button-toggle (click)="refuseteVetProfile('3')"  value="underline">Underline</mat-button-toggle>
+                </td>
+
               </tr>
+
+
+
+
+
               <tr>
                 <td colspan="4"></td>
               </tr>
@@ -90,6 +112,7 @@
         </div>
       </div>
     </ng-container>
+
 
   </mat-tab>
   <mat-tab label="clients">     <ng-container>

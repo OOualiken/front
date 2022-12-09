@@ -30,6 +30,14 @@ export class BackOfficePageComponent implements OnInit {
         console.log(error)
       }
     )
+    this.userService.getUserListByRole('client').subscribe(
+      data => {
+        this.vet=data
+        console.log(data)
+      }, error => {
+        console.log(error)
+      }
+    )
     this.userService
   }
 
