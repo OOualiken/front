@@ -7,6 +7,7 @@ import {VetdisponibilityService} from "../services/vetdisponibility-service/vetd
 import {ActivatedRoute} from "@angular/router";
 import {User} from "../models/user";
 import {VetDisponibility} from "../models/vetDisponibility";
+import {Pet} from "../models/pet";
 
 interface Horaire {
   heure: string;
@@ -111,8 +112,11 @@ interface Food {
 export class SchadulerComponent implements OnInit {
   selected: Date | null;
   dispoList : any
+  selectedPet!: Pet
+
   ngOnInit(): void {
   }
+
   animal: string;
   name: string;
   selectedValue: any;
@@ -137,6 +141,16 @@ export class SchadulerComponent implements OnInit {
 
 
   search(){
+
+  }
+
+
+  getDisponibilityByDate(date: Date){
+    this.vetdispoService.getAllDisponibilityByDate(date).subscribe(data => {
+      console.log(data)
+    }, error => {
+      console.log(error)
+    })
   }
 
   async getvetDispo(): Promise<void> {

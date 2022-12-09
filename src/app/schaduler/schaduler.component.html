@@ -52,7 +52,15 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
-      <p>  {{selectedValue}} </p>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Selection de l'animal</mat-label>
+        <mat-select [(ngModel)]="selectedPet" name="pet">
+          <mat-option *ngFor="let p of profile.pets" [value]="p.id">
+            {{p.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
     </form>
     <h2>selectionner une date </h2>
