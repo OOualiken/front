@@ -12,33 +12,16 @@
         <div class="item">
           <div class="container">
             <div class="row">
-              <ng-container >
+              <ng-container *ngFor="let app of dispoList" >
                 <div class="card col-md-3">
                   <img src="assets/ping.png" alt="">
                   <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
                   <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
                   <p><strong> 17H</strong></p>
-                  <button class="btn btn-primary"> supprimer le RDV</button>
+                  <button class="btn btn-primary" (click)="deleteappointment(app._id)"> supprimer le RDV</button>
                 </div>
               </ng-container>
-              <ng-container >
-                <div class="card col-md-3">
-                  <img src="assets/ping.png" alt="">
-                  <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
-                  <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
-                  <p><strong> 17H</strong></p>
-                  <button class="btn btn-primary"> supprimer le RDV</button>
-                </div>
-              </ng-container>
-              <ng-container >
-                <div class="card col-md-3">
-                  <img src="assets/ping.png" alt="">
-                  <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
-                  <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
-                  <p><strong> 17H</strong></p>
-                  <button class="btn btn-primary"> supprimer le RDV</button>
-                </div>
-              </ng-container>
+
 
             </div>
           </div>

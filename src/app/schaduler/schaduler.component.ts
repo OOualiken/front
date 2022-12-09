@@ -205,6 +205,16 @@ export class SchadulerComponent implements OnInit {
     return this.selectedValue == undefined || this.selectedPet==undefined ||
       !(this.selectedValue.length>0 && this.selectedPet.length>0)
   }
+  deleteappointment(_id: any) {
+    this.vetdispoService.deleteVetDisponibility(_id).subscribe( value => {
+      console.log(value)
+      window.location.reload();
+    },error => {
+      console.log(error)
+    })
+
+  }
+
 
 }
 

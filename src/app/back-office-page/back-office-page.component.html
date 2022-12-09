@@ -6,31 +6,47 @@
           <div class="cart-product">
             <table class="table table-responsive">
               <thead>
+
               <tr>
-                <td style="width: 25%;">veterinaire</td>
-                <th style="width: 12%;">client</th>
-                <td style="width: 12%;">rdv date</td>
-                <td style="width: 12%;"> supprimer </td>
-                <td style="width: 12%;"> valider le compte </td>
-                <td style="width: 12%;"> status du compte </td>
+                <td style="width: 25%;">firstName</td>
+                <th style="width: 12%;">lastName</th>
+                <td style="width: 12%;">phoneNb</td>
+                <td style="width: 12%;"> quantity </td>
+                <td style="width: 12%;"> postalCode </td>
+                <td style="width: 12%;"> speciality </td>
+                <td style="width: 12%;"> status </td>
+
 
 
               </tr>
               </thead>
               <tbody>
-              <tr >
-                <td style="width: 12%;">test</td>
-                <td style="width: 25%;">djadji </td>
-                <th style="width: 12%;">traore</th>
+              <tr *ngFor="let item of vet; let i = index">
+                <td>{{i+1}}</td>
+                <td>{{item.title}}</td>
+                <td><img style="width: 120px;" src="assets/vet.png" alt=""></td>
+                <td style="width: 25%;">{{item.firstName}}</td>
+                <td style="width: 25%;">{{item.lastName}}</td>
+                <th style="width: 12%;">{{item.phoneNb}}</th>
+                <td style="width: 12%;">{{item.quantity}}</td>
+                <td style="width: 12%;">{{item.postalCode}}</td>
+                <td style="width: 12%;">{{item.speciality}}</td>
+                <td style="width: 12%;">{{item.active}}</td>
+
                 <td>
+
+                </td>
+              </tr>
+
+              <td>
                   <button (click)="removeItem()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </td>
                 <td>
                   <mat-button-toggle (click)="refuseteVetProfile('3')"  value="underline">Underline</mat-button-toggle>
 
                 </td>
-                <td> valide</td>
-              </tr>
+
+
               <tr>
                 <td colspan="4"></td>
               </tr>
