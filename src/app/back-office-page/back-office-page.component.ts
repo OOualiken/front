@@ -10,8 +10,6 @@ import {FormBuilder, FormGroup, Validators} from "@angular/forms";
   styleUrls: ['./back-office-page.component.css']
 })
 export class BackOfficePageComponent implements OnInit {
-
-
   adminForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private authService: AuthService) {
@@ -23,6 +21,14 @@ export class BackOfficePageComponent implements OnInit {
       password : ['', [Validators.required, Validators.minLength(5)]],
     });
 
+    this.userService.getUserListByRole('veterinary').subscribe(
+      data => {
+        console.log(data)
+      }, error => {
+        console.log(error)
+      }
+    )
+    this.userService
   }
 
   removeItem(){
@@ -81,6 +87,7 @@ export class BackOfficePageComponent implements OnInit {
       })
   }
 
+
   refuseteVetProfile(userId: string){
     this.authService.refuseVet(userId).subscribe(data => {
         window.location.reload();
@@ -92,4 +99,7 @@ export class BackOfficePageComponent implements OnInit {
         }
       })
   }
+
+
+
 }

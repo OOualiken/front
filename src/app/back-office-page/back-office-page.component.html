@@ -10,6 +10,11 @@
                 <td style="width: 25%;">veterinaire</td>
                 <th style="width: 12%;">client</th>
                 <td style="width: 12%;">rdv date</td>
+                <td style="width: 12%;"> supprimer </td>
+                <td style="width: 12%;"> valider le compte </td>
+                <td style="width: 12%;"> status du compte </td>
+
+
               </tr>
               </thead>
               <tbody>
@@ -20,6 +25,11 @@
                 <td>
                   <button (click)="removeItem()" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
                 </td>
+                <td>
+                  <mat-button-toggle (click)="refuseteVetProfile('3')"  value="underline">Underline</mat-button-toggle>
+
+                </td>
+                <td> valide</td>
               </tr>
               <tr>
                 <td colspan="4"></td>
