@@ -1,0 +1,85 @@
+<div class="dialog">
+  <h1>Nouvelle animal</h1>
+
+  <div [formGroup]="recordForm" class="form">
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>Type d'animal de compagnie</mat-label>
+      <mat-icon matPrefix>pets</mat-icon>
+      <input matInput placeholder="Nom de votre animal" formControlName="type" required>
+    </mat-form-field>
+
+    <div>
+      <label>Sexe* : </label>
+      <mat-radio-group
+        class="field"
+        formControlName="sex">
+        <mat-radio-button class="rad_btn" *ngFor="let s of sexList" [value]="s.value"  [checked]="isSexChecked(s.value)">
+          {{s.type}}
+        </mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+
+    <mat-form-field appearance="outline" class="field">
+      <mat-label>Nom de votre animal</mat-label>
+      <mat-icon matPrefix>pets</mat-icon>
+      <input matInput placeholder="Nom de votre animal" formControlName="name" required>
+    </mat-form-field>
+
+    <mat-form-field
+      class="field"
+      appearance="outline">
+      <mat-label>Race de votre animal</mat-label>
+      <input matInput placeholder="Race de votre animal" formControlName="breed" required>
+    </mat-form-field>
+
+    <mat-form-field
+      class="field"
+      appearance="outline" >
+      <mat-label>La date de naissance de votre animal </mat-label>
+      <input formControlName="birthDate" [max]="today" matInput [matDatepicker]="picker" readonly required>
+      <mat-hint>JJ/MM/AAAA</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-stroked-button
+            class="save_btn" (click)="savePet()"
+            cdkFocusInitial [disabled]="!this.recordForm.valid">
+      Créer le profil animal
+    </button>
+  </div>
+
+  <mat-divider style="width: 70vw; margin: 10px"></mat-divider>
+
+  <div>
+    <h1>Mes animaux</h1>
+    <ng-container *ngFor="let pet of profile.pets">
+      <mat-card style="margin: 10px">
+        <mat-card-title>
+          {{pet.name}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{pet.type}} : {{pet.breed}}
+        </mat-card-subtitle>
+        <mat-card-content>
+          Sexe : {{pet.sex}}
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button
+                  class="close_btn" (click)="deletePet(pet.id)"
+                  cdkFocusInitial>Supprimer</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-divider style="width: 20vw; margin: 10px"></mat-divider>
+    </ng-container>
+  </div>
+</div>
+
+

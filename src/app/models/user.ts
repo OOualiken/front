@@ -145,11 +145,11 @@ export class User {
     this._active = value;
   }
 
-  get healthRecords(): any[] {
+  get pets(): any[] {
     return <any[]>this._pets;
   }
 
-  set healthRecords(value: any[]) {
+  set pets(value: any[]) {
     this._pets = value;
   }
 
