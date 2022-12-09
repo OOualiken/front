@@ -110,7 +110,7 @@ interface Food {
 })
 export class SchadulerComponent implements OnInit {
   selected: Date = new Date()
-  dispoList : any
+  dispoList : any = []
   selectedPet!: string
   selectedBookingDate: Date = new Date()
   bookingDispoList: any[] = []
@@ -138,8 +138,6 @@ export class SchadulerComponent implements OnInit {
     this.vetdispoService.getMyAppointment().subscribe(data => {
       this.dispoList = data
       console.log(this.dispoList)
-
-
     })
   }
 
