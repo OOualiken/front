@@ -18,7 +18,7 @@
                   <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
                   <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
                   <p><strong> 17H</strong></p>
-                  <button class="btn btn-primary" (click)="deleteappointment(app._id)"> supprimer le RDV</button>
+                  <button class="btn btn-primary" (click)="deleteappointment(app)"> supprimer le RDV</button>
                 </div>
               </ng-container>
 
@@ -47,7 +47,7 @@
                 <img src="assets/cat.png" alt="">
                 <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> {{app.date}} </p>
                 <p><strong> 17H</strong></p>
-                <button class="btn btn-primary" (click)="deleteVetDisponibility(app._id)"> supprimer le crenaux</button>
+                <button class="btn btn-primary" (click)="deleteVetDisponibility(app.id)"> supprimer le crenaux</button>
               </div>
             </ng-container>
 
