@@ -111,7 +111,9 @@ interface Food {
 export class SchadulerComponent implements OnInit {
   selected: Date = new Date()
   dispoList : any
-  selectedPet!: Pet
+  selectedPet!: string
+  selectedBookingDate: Date = new Date()
+  bookingDispoList: any[] = []
 
   dayLisList : any= []
 
@@ -123,6 +125,8 @@ export class SchadulerComponent implements OnInit {
   selectedValue: any;
   selectedCar: string;
   profile!: User
+
+  minDate = new Date()
 
   foods: Food[] = [
     {value: 'steak-0', viewValue: 'Steak'},
@@ -145,9 +149,9 @@ export class SchadulerComponent implements OnInit {
   }
 
 
-  getDisponibilityByDate(date: Date){
-    this.vetdispoService.getAllDisponibilityByDate(date).subscribe(data => {
-      console.log(data)
+  getDisponibilityByDate(){
+    this.vetdispoService.getAllDisponibilityByDate(this.selectedBookingDate).subscribe(data => {
+      this.bookingDispoList = data
     }, error => {
       console.log(error)
     })
@@ -184,7 +188,23 @@ export class SchadulerComponent implements OnInit {
     });
   }
 
+  getDateHour(dateStr: string){
+    let date = new Date(dateStr)
+    return date.getHours()+":"+date.getMinutes()
+  }
 
+  bookAppointment(id: string){
+    this.vetdispoService.bookAppointment(id, this.selectedValue, this.selectedPet).subscribe( value => {
+      console.log(value)
+    },error => {
+      console.log(error)
+    })
+  }
+
+  isBookingOk(){
+    return this.selectedValue == undefined || this.selectedPet==undefined ||
+      !(this.selectedValue.length>0 && this.selectedPet.length>0)
+  }
 
 }
 

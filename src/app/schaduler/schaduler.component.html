@@ -1,5 +1,5 @@
 <mat-tab-group dynamicHeight>
-<mat-tab label=" gestion calendrier" [hidden]="profile.role!=='veterinary'">
+<mat-tab label=" gestion calendrier" *ngIf="profile.role==='veterinary'">
   <div class="navbar navbar-dark bg-primary shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
     </div>
@@ -83,7 +83,7 @@
 
 
 </mat-tab>
-  <mat-tab label="prendre Mes rendez-vous " [hidden]="profile.role!=='client'">
+  <mat-tab label="prendre Mes rendez-vous " *ngIf="profile.role==='client'">
     <header>
       <div class="navbar navbar-dark bg-primary shadow-sm">
         <div class="navbar-brand align-item-center d-flex">
@@ -112,21 +112,28 @@
           </mat-option>
         </mat-select>
       </mat-form-field>
+      <p>{{selectedPet}}</p>
 
     </form>
     <h2>selectionner une date </h2>
-
-    <mat-form-field class="example-full-width" appearance="fill">
-      <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker">
-        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
-      </mat-datepicker-toggle>
-      <mat-datepicker #picker ></mat-datepicker>
-    </mat-form-field>
+    <mat-card class="demo-inline-calendar-card">
+      <mat-calendar [minDate]="minDate" [(selected)]="selectedBookingDate" (selectedChange)="getDisponibilityByDate()"></mat-calendar>
+    </mat-card>
+    <ng-container *ngFor="let b of bookingDispoList">
+      <mat-card style="margin: 10px" >
+        <mat-card-title>
+          {{getDateHour(b.date)}}
+        </mat-card-title>
+        <mat-card-subtitle>
+          {{b.veterinary.lastName}} {{b.veterinary.firstName}}
+        </mat-card-subtitle>
+        <mat-card-actions>
+          <button class="btn btn-primary" (click)="bookAppointment(b.id)" [disabled]="isBookingOk()"> Réserver</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
   </mat-tab >
-  <button class="btn btn-primary"> trouver un rdv</button>
+
 
 
 
