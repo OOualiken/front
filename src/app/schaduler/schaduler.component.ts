@@ -20,8 +20,6 @@ interface Horaire {
 
 export class DialogOverviewExampleDialog {
   durationInSeconds = 2;
-
-
   selected: Date | null | undefined;
   hours: Horaire = {heure: '8h00'}
   constructor(public dialogRef: MatDialogRef<DialogOverviewExampleDialog>, private vetdispoService : VetdisponibilityService,
@@ -60,7 +58,6 @@ export class DialogOverviewExampleDialog {
     });
   }
 
-
   saveDispo(){
     console.log(this.selected)
     console.log(this.hours)
@@ -71,6 +68,8 @@ export class DialogOverviewExampleDialog {
 
     this.vetdispoService.postVetDisponibility(date).subscribe(
       data => {
+        window.location.reload();
+
         console.log(data)
       }, error => {
         console.log(error)
@@ -109,8 +108,10 @@ interface Food {
 
 })
 export class SchadulerComponent implements OnInit {
-  selected: Date | null;
+  selected: Date = new Date()
   dispoList : any
+  dayLisList : any= []
+
   ngOnInit(): void {
   }
   animal: string;
@@ -124,31 +125,45 @@ export class SchadulerComponent implements OnInit {
     {value: 'pizza-1', viewValue: 'Pizza'},
     {value: 'tacos-2', viewValue: 'Tacos'},
   ];
-
-
   constructor(public dialog: MatDialog, private route: ActivatedRoute, private vetdispoService : VetdisponibilityService) {
     this.route.data.subscribe(data => this.profile = data.profile);
     this.vetdispoService.getMyAppointment().subscribe(data => {
       this.dispoList = data
       console.log(this.dispoList)
 
+
     })
   }
 
 
-  search(){
+
+
+
+  deleteVetDisponibility(id: any){
+    this.vetdispoService.deleteVetDisponibility(id).subscribe( value => {
+      console.log(value)
+      window.location.reload();
+    },error => {
+      console.log(error)
+    })
   }
+
+  removeRDV(item: any){
+   // this.cartService.removeCartItem(item);
+  }
+
 
   async getvetDispo(): Promise<void> {
     const result = await this.vetdispoService.getVetDisponibility(this.profile.id, this.selected)
     result.subscribe(async value => {
-   //   this.dispoList =value
-      console.log(value)
+     this.dayLisList =value.dispoList
+      console.log(value.dispoList)
     },error => {
         console.log(error)
     }
     )
   }
+
     openDialog(): void {
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       data: {name: this.name, animal: this.animal},

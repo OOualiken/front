@@ -50,6 +50,14 @@ export class VetdisponibilityService {
       {headers: header})
   }
 
+
+
+  deleteVetDisponibility(dipoID: string): Observable<any>{
+    let header = this.authService.getAuthorizationHeadersWithToken()
+    return this.http.delete<any>(this.baseUrl+"/vet-disponibility/"+dipoID,
+      {headers: header})
+  }
+
   getMyAppointment(): Observable<any>{
     let header = this.authService.getAuthorizationHeadersWithToken()
     return this.http.get<any>(this.baseUrl, {headers: header}).pipe()

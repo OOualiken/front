@@ -28,7 +28,7 @@ mat-form-field {
 }
 
 .item img {
-  width: 64px;
+  width: 20%;
 }
 
 .item {
@@ -37,7 +37,7 @@ mat-form-field {
 }
 
 .item a:hover {
-  color: blue;
+  color: #4196ef;
 }
 
 .card {

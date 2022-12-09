@@ -3,35 +3,86 @@
   <div class="navbar navbar-dark bg-primary shadow-sm">
     <div class="navbar-brand align-item-center d-flex">
     </div>
-    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'"> Gestion de mon calendrier </button>
+    <button class="btn btn-primary"  (click)="openDialog()" [hidden]="profile.role!=='veterinary'"> ajouter un  crenaux  </button>
   </div>
-  <mat-card class="demo-inline-calendar-card">
-    <mat-calendar [(selected)]="selected" (selectedChange)="getvetDispo()"></mat-calendar>
-  </mat-card>
-  <ng-container *ngFor="let app of dispoList.future">
-    <div class="container" *ngIf="app.bookingStatus">
-      <div class="row">
-          <div class="card col-md-3">
-            <img src="assets/ping.png" alt="">
-            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{app.bookingStatus}}</h5>
-          </div>
-      </div>
-    </div>
-  </ng-container>
+  <mat-tab>
+    <ng-template mat-tab-label>gestion de mes rdv</ng-template>
+    <div>
+      <div >
+        <div class="item">
+          <div class="container">
+            <div class="row">
+              <ng-container >
+                <div class="card col-md-3">
+                  <img src="assets/ping.png" alt="">
+                  <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
+                  <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
+                  <p><strong> 17H</strong></p>
+                  <button class="btn btn-primary"> supprimer le RDV</button>
+                </div>
+              </ng-container>
+              <ng-container >
+                <div class="card col-md-3">
+                  <img src="assets/ping.png" alt="">
+                  <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
+                  <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
+                  <p><strong> 17H</strong></p>
+                  <button class="btn btn-primary"> supprimer le RDV</button>
+                </div>
+              </ng-container>
+              <ng-container >
+                <div class="card col-md-3">
+                  <img src="assets/ping.png" alt="">
+                  <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">MR loma risse</h5>
+                  <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> vaccination</p>
+                  <p><strong> 17H</strong></p>
+                  <button class="btn btn-primary"> supprimer le RDV</button>
+                </div>
+              </ng-container>
 
-  <ng-container *ngFor="let app of dispoList.future">
-    <div class="container" *ngIf="!app.bookingStatus">
-      <div class="row">
-        <div class="card col-md-3">
-          <img src="assets/cat.png" alt="">
-          <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{app.bookingStatus}}</h5>
+            </div>
+          </div>
+
+
         </div>
       </div>
     </div>
-  </ng-container>
+
+  </mat-tab>
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected" (selectedChange)="getvetDispo()"></mat-calendar>
+  </mat-card>
+
+  <div>
+    <div >
+      <div class="item">
+        <div class="container">
+          <div class="row">
+
+            <ng-container *ngFor="let app of dayLisList">
+              <div class="card col-md-3">
+                <img src="assets/cat.png" alt="">
+                <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"> {{app.date}} </p>
+                <p><strong> 17H</strong></p>
+                <button class="btn btn-primary" (click)="deleteVetDisponibility(app._id)"> supprimer le crenaux</button>
+              </div>
+            </ng-container>
+
+
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 </mat-tab>
-
   <mat-tab label="prendre Mes rendez-vous " [hidden]="profile.role!=='client'">
     <header>
       <div class="navbar navbar-dark bg-primary shadow-sm">
