@@ -21,7 +21,7 @@ export class AuthService {
     ).subscribe(data => {
         AuthService.saveToken(data.token)
         this.showToaster("Bienvenue, vous êtes connecté!")
-        this.router.navigate(['/']).then(() => {
+        this.router.navigate(['/profile']).then(() => {
           window.location.reload();
         });
 

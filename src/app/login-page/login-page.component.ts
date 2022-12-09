@@ -51,7 +51,6 @@ export class LoginPageComponent implements OnInit {
 
    signIn() {
     this.authService.login(this.connectForm.value)
-   // this.router.navigate(['/profile'])
   }
 
   signUp(){
