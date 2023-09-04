@@ -1,27 +1,62 @@
-# Front
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
+2. Follow-up and Communication
 
-## Development server
+To ensure a smooth release process, communication is key. The following steps are critical to track, communicate, and ensure the delivery of release tasks:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+2.1. Ticket Status Tracking
 
-## Code scaffolding
+	•	Conduct daily meetings with teams to track the status of tickets.
+	•	Use tools like JIRA or Trello for transparency and real-time updates.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2.2. Team Capacity Tracking
 
-## Build
+	•	Assess the team’s capacity for the upcoming three sprints.
+	•	Ensure a balance between capacity and task assignments.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2.3. Regular Communication of Release Content
 
-## Running unit tests
+	•	Communicate the contents and impact of the release to stakeholders.
+	•	Facilitate Q&A sessions for clarifications.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2.4. Task Definition and Communication
 
-## Running end-to-end tests
+	•	Clearly define tasks and their respective objectives.
+	•	Communicate task assignments to support teams promptly.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+2.5. Business Sign-offs Follow-up
 
-## Further help
+	•	Collaborate with the business side to get required sign-offs.
+	•	Maintain a log of all approved and pending sign-offs.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2.6. Go/No Go Decision
+
+	•	Conduct a lateral review before the CAB to decide on proceeding with the release or halting it.
+
+2.7. Release Report and Retrospective
+
+	•	Document the outcome of each release.
+	•	Conduct a post-release retrospective to identify improvements for future releases.
+
+3. Release Types
+
+3.1. Definitions
+
+	•	Major Release: Significant changes, which may include new features, architectural changes, and compliance adjustments.
+	•	Minor Release: Smaller changes, which may include minor feature enhancements or non-critical bug fixes.
+	•	Urgent Release: Immediate changes, typically related to urgent bug fixes or critical compliance updates.
+
+3.2. Requirements
+
+	•	Major Release: Comprehensive testing, stakeholder sign-offs, and regulatory compliance checks.
+	•	Minor Release: Regression testing, and quick stakeholder feedback.
+	•	Urgent Release: Rapid testing, immediate stakeholder communication, and regulatory compliance confirmation.
+
+3.3. Planning and Execution of Major Releases
+
+	•	Major releases are scheduled every two weeks.
+	•	Ensure comprehensive testing, especially for regulatory compliance aspects such as MAR and MiFID.
+
+3.4. Bug Fixes and Minor Enhancements
+
+	•	Adopt a quick turnaround approach for minor enhancements.
+	•	Ensure that even minor changes align with regulations like DFA/CFTC and EST.
